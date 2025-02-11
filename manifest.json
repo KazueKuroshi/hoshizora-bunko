@@ -1,7 +1,7 @@
 {
     "name": "Hoshizora Bunko",
     "short_name": "HB",
-    "start_url": "/",
+    "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#2c3e50",
