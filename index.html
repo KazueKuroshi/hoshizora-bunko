@@ -56,31 +56,33 @@
         </div>
     </footer>
 
-    <!-- Payment Modal -->
-    <div id="payment-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closePaymentModal()">&times;</span>
-            <h2>Choose Payment Method</h2>
-            <div class="payment-methods">
-                <button onclick="selectPaymentMethod('Dana')">Dana</button>
-                <button onclick="selectPaymentMethod('GoPay')">GoPay</button>
-                <button onclick="selectPaymentMethod('ShopeePay')">ShopeePay</button>
-                <button onclick="selectPaymentMethod('Bank Transfer')">Bank Transfer</button>
-            </div>
-            <div id="payment-details" class="hidden">
-                <h3>Payment Details</h3>
-                <p id="selected-method"></p>
-                <p>Total: $<span id="payment-total">0.00</span></p>
-                <form id="confirmation-form" onsubmit="handleConfirmation(event)">
-                    <label for="proof">Upload Payment Proof:</label>
-                    <input type="file" id="proof" name="proof" required>
-                    <label for="contact">Contact (WA/Telegram/Email):</label>
-                    <input type="text" id="contact" name="contact" placeholder="Enter your WhatsApp/Telegram/Email" required>
-                    <button type="submit">Confirm Payment</button>
-                </form>
-            </div>
+    <!-- Modal Pembayaran -->
+<div id="payment-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+        <h2>Choose Payment Method</h2>
+        <div class="payment-methods">
+            <button onclick="selectPaymentMethod('Dana', '1234567890', 'John Doe')">Dana</button>
+            <button onclick="selectPaymentMethod('GoPay', '0987654321', 'Jane Doe')">GoPay</button>
+            <button onclick="selectPaymentMethod('ShopeePay', '1122334455', 'ShopPro')">ShopeePay</button>
+            <button onclick="selectPaymentMethod('Bank Transfer', '1234-5678-9012', 'Bank ABC')">Bank Transfer</button>
+        </div>
+        <div id="payment-details" class="hidden">
+            <h3>Payment Details</h3>
+            <p><strong>Selected Method:</strong> <span id="selected-method"></span></p>
+            <p><strong>Account Name:</strong> <span id="account-name"></span></p>
+            <p><strong>Account Number:</strong> <span id="account-number"></span></p>
+            <p><strong>Total:</strong> $<span id="payment-total">0.00</span></p>
+            <form id="confirmation-form" onsubmit="handleConfirmation(event)">
+                <label for="proof">Upload Payment Proof:</label>
+                <input type="file" id="proof" name="proof" required>
+                <label for="contact">Contact (WA/Telegram/Email):</label>
+                <input type="text" id="contact" name="contact" placeholder="Enter your WhatsApp/Telegram/Email" required>
+                <button type="submit">Confirm Payment</button>
+            </form>
         </div>
     </div>
+</div>
 
     <script src="script.js"></script>
     <script>
