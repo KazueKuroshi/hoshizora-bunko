@@ -87,16 +87,12 @@ function sendConfirmation(data) {
     // Integrate with WhatsApp/Telegram/Email API here.
 }
 
-// Fungsi untuk membuka modal deskripsi produk
-function openProductModal(name, image, description, price) {
-    document.getElementById('modal-product-name').textContent = name;
-    document.getElementById('modal-product-image').src = image;
-    document.getElementById('modal-product-description').textContent = description;
-    document.getElementById('modal-product-price').textContent = price.toFixed(2);
-    document.getElementById('product-modal').style.display = 'flex';
-}
-
-// Fungsi untuk menutup modal deskripsi produk
-function closeProductModal() {
-    document.getElementById('product-modal').style.display = 'none';
+// Fungsi untuk menampilkan/menyembunyikan deskripsi produk
+function toggleDescription(id) {
+    const description = document.getElementById(id);
+    if (description.style.display === 'none' || description.style.display === '') {
+        description.style.display = 'block';
+    } else {
+        description.style.display = 'none';
+    }
 }
