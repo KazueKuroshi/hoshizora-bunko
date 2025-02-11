@@ -8,8 +8,8 @@ const ASSETS = [
     '/script.js',
     '/auth.js',
     '/manifest.json',
-    'img/hb200x200.png',
-    '/icon-512x512.png',
+    '/img/hb200x200.png',
+    '/profile.html',
     '/product1.jpg',
     '/product2.jpg'
 ];
