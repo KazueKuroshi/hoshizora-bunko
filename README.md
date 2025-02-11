@@ -1,21 +1,28 @@
-# Hoshizora Bunko - Perpustakaan Langit Berbintang
+# Hoshizora Bunko - Perpustakaan Langit Berbintang 🌌
 
-Hoshizora Bunko adalah aplikasi belanja online sederhana yang dibangun menggunakan HTML, CSS, dan JavaScript. Aplikasi ini memungkinkan pengguna untuk:
-- Melihat produk.
-- Menambahkan produk ke keranjang.
-- Melakukan pembayaran melalui berbagai metode (Dana, GoPay, ShopeePay, Transfer Bank).
-- Mengunggah bukti pembayaran dan mengonfirmasi pesanan.
-- Login dan registrasi akun.
+Selamat datang di **Hoshizora Bunko**, sebuah perpustakaan digital yang menghadirkan terjemahan novel ringan dan web novel dari berbagai penjuru dunia. Kami berkomitmen untuk membawa kisah-kisah menarik ke dalam bahasa yang lebih mudah dinikmati oleh pembaca.
 
-## Fitur
-- **Halaman Produk**: Menampilkan daftar produk dengan gambar, nama, dan harga.
-- **Keranjang Belanja**: Menyimpan produk yang dipilih dan menghitung total harga.
-- **Pembayaran**: Memilih metode pembayaran (Dana, GoPay, ShopeePay, Transfer Bank) dan menampilkan informasi rekening.
-- **Konfirmasi Pembayaran**: Mengunggah bukti pembayaran dan mengirimkan kontak untuk konfirmasi.
-- **Login & Registrasi**: Pengguna dapat membuat akun dan login.
+## 📖 Tentang Kami
+Hoshizora Bunko (Perpustakaan Langit Berbintang) adalah komunitas yang didedikasikan untuk menerjemahkan dan membagikan cerita-cerita yang belum tersedia dalam bahasa kita. Dengan semangat **membawa cahaya cerita dari negeri jauh**, kami berharap dapat memperkaya pengalaman membaca Anda.
 
-## Cara Menjalankan Proyek
-1. **Clone Repository**:
-   ```bash
-   git clone https://github.com/username/shopping-app.git
-   cd shopping-app
+📌 Baca lebih lanjut di **[Tentang Kami](About.md)**  
+
+## 📚 Apa yang Kami Tawarkan?
+- **Terjemahan Novel**: Novel ringan dan web novel dari Jepang, China, Korea, dan lainnya.
+- **Artikel & Review**: Ulasan menarik tentang novel terbaru dan rekomendasi bacaan.
+- **Forum & Komunitas**: Tempat bagi para pembaca untuk berdiskusi dan berbagi pendapat.
+
+## 🚀 Bergabung dengan Kami
+Kami selalu terbuka untuk penerjemah, editor, dan kontributor baru yang ingin membantu menghadirkan lebih banyak cerita menarik. Jika tertarik, baca lebih lanjut di **[Kontribusi & Bergabung](Contribution.md)**.
+
+## 💖 Dukung Kami
+Jika Anda menikmati karya kami dan ingin membantu menjaga kelangsungan **Hoshizora Bunko**, Anda bisa:
+- Berdonasi melalui **[platform donasi pilihan]**.
+- Membagikan novel favorit ke teman-teman.
+- Bergabung sebagai kontributor.
+
+📢 Info lebih lanjut tentang cara mendukung kami bisa dibaca di **[Dukungan & Donasi](Support.md)**.
+
+---
+
+✨ **Selamat menikmati perjalanan di bawah langit berbintang!** ✨
