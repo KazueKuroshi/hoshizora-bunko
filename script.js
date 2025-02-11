@@ -1,6 +1,8 @@
 let cart = [];
 let total = 0;
 let selectedPaymentMethod = null;
+let selectedAccountName = null;
+let selectedAccountNumber = null;
 
 function addToCart(name, price) {
     cart.push({ name, price });
@@ -34,12 +36,20 @@ function openPaymentModal() {
 function closePaymentModal() {
     document.getElementById('payment-modal').style.display = 'none';
     selectedPaymentMethod = null;
+    selectedAccountName = null;
+    selectedAccountNumber = null;
     document.getElementById('payment-details').classList.add('hidden');
 }
 
-function selectPaymentMethod(method) {
+function selectPaymentMethod(method, accountNumber, accountName) {
     selectedPaymentMethod = method;
-    document.getElementById('selected-method').textContent = `Selected Method: ${method}`;
+    selectedAccountName = accountName;
+    selectedAccountNumber = accountNumber;
+
+    // Tampilkan informasi pembayaran
+    document.getElementById('selected-method').textContent = method;
+    document.getElementById('account-name').textContent = accountName;
+    document.getElementById('account-number').textContent = accountNumber;
     document.getElementById('payment-details').classList.remove('hidden');
 }
 
@@ -55,6 +65,8 @@ function handleConfirmation(event) {
 
     const confirmationData = {
         paymentMethod: selectedPaymentMethod,
+        accountName: selectedAccountName,
+        accountNumber: selectedAccountNumber,
         total: total.toFixed(2),
         contact: contact,
         proof: proof.name,
@@ -70,7 +82,7 @@ function handleConfirmation(event) {
 }
 
 function sendConfirmation(data) {
-    const message = `Payment Confirmation:\nMethod: ${data.paymentMethod}\nTotal: $${data.total}\nContact: ${data.contact}\nProof: ${data.proof}`;
+    const message = `Payment Confirmation:\nMethod: ${data.paymentMethod}\nAccount Name: ${data.accountName}\nAccount Number: ${data.accountNumber}\nTotal: $${data.total}\nContact: ${data.contact}\nProof: ${data.proof}`;
     console.log('Sending confirmation:', message);
     // Integrate with WhatsApp/Telegram/Email API here.
 }
