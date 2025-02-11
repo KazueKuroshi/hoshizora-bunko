@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A professional and responsive shopping app.">
+    <title>ShopPro - Your Online Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon-192x192.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ShopPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="products">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="product1.jpg" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p>$10.00</p>
+                    <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="product2.jpg" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p>$20.00</p>
+                    <button onclick="addToCart('Product 2', 20)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button onclick="openPaymentModal()" class="checkout-btn">Proceed to Payment</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ShopPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+            <h2>Choose Payment Method</h2>
+            <div class="payment-methods">
+                <button onclick="selectPaymentMethod('Dana')">Dana</button>
+                <button onclick="selectPaymentMethod('GoPay')">GoPay</button>
+                <button onclick="selectPaymentMethod('ShopeePay')">ShopeePay</button>
+                <button onclick="selectPaymentMethod('Bank Transfer')">Bank Transfer</button>
+            </div>
+            <div id="payment-details" class="hidden">
+                <h3>Payment Details</h3>
+                <p id="selected-method"></p>
+                <p>Total: $<span id="payment-total">0.00</span></p>
+                <form id="confirmation-form" onsubmit="handleConfirmation(event)">
+                    <label for="proof">Upload Payment Proof:</label>
+                    <input type="file" id="proof" name="proof" required>
+                    <label for="contact">Contact (WA/Telegram/Email):</label>
+                    <input type="text" id="contact" name="contact" placeholder="Enter your WhatsApp/Telegram/Email" required>
+                    <button type="submit">Confirm Payment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>
