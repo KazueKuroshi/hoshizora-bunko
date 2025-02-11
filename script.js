@@ -28,6 +28,13 @@ function updateCart() {
 
 // Fungsi untuk membuka modal pembayaran
 function openPaymentModal() {
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!user) {
+        alert('You must login first to proceed to payment.');
+        window.location.href = 'login.html'; // Redirect ke halaman login
+        return;
+    }
+
     if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
@@ -83,6 +90,9 @@ function handleConfirmation(event) {
         return;
     }
 
+    // Ambil informasi pengguna yang login
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
     // Simpan informasi pembayaran
     const confirmationData = {
         paymentMethod: selectedPaymentMethod,
@@ -91,6 +101,7 @@ function handleConfirmation(event) {
         total: total.toFixed(2),
         contact: contact,
         proof: proof.name,
+        userPaymentAccount: user.paymentAccount, // Tambahkan akun pembayaran pengguna
     };
 
     // Buat pesan WhatsApp
@@ -100,7 +111,8 @@ Account Name: ${confirmationData.accountName}
 Account Number: ${confirmationData.accountNumber}
 Total: $${confirmationData.total}
 Contact: ${confirmationData.contact}
-Proof: ${confirmationData.proof}`;
+Proof: ${confirmationData.proof}
+User Payment Account: ${confirmationData.userPaymentAccount}`;
 
     // Jika ada backend, unggah gambar dan dapatkan tautan
     // Contoh: uploadImageToServer(proof).then(imageUrl => { ... });
