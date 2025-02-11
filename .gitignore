@@ -1,3 +1,39 @@
 git remote add origin git@github.com:KazueKuroshi/hoshizora-bunko.git
 git branch -M main
 git push -u origin main
+
+
+---
+
+### **10. File `.gitignore`**
+```gitignore
+# Ignore node_modules
+node_modules/
+
+# Ignore environment variables
+.env
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore log files
+*.log
+
+# Ignore build files
+dist/
+build/
+
+# Ignore cache
+.cache/
+
+# Ignore local storage backup files
+*.bak
+
+# Ignore image files (jika tidak ingin melacak gambar)
+*.jpg
+*.png
+*.gif
