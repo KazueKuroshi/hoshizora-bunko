@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Hoshizora Bunko</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hoshizora Bunko</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#" onclick="handleLogout()">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="profile">
+            <h2>Your Profile</h2>
+            <div id="profile-info">
+                <!-- Informasi profil akan ditampilkan di sini -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hoshizora Bunko. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script>
+        // Tampilkan informasi profil pengguna yang login
+        const user = JSON.parse(localStorage.getItem('loggedInUser'));
+        if (user) {
+            document.getElementById('profile-info').innerHTML = `
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+            `;
+        } else {
+            // Jika tidak ada pengguna yang login, redirect ke halaman login
+            window.location.href = 'login.html';
+        }
+
+        // Fungsi untuk logout
+        function handleLogout() {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
