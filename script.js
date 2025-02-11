@@ -60,7 +60,7 @@ function selectPaymentMethod(method, accountNumber, accountName) {
 
 // Fungsi untuk mengirim pesan WhatsApp
 function sendWhatsAppMessage(contact, message, imageUrl = null) {
-    const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Anda (tanpa tanda + atau 0)
+    const phoneNumber = '6283807586238'; // Ganti dengan nomor WhatsApp Anda (tanpa tanda + atau 0)
     let whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     // Jika ada tautan gambar, tambahkan ke pesan
