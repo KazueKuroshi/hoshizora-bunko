@@ -303,3 +303,27 @@ footer p {
 #login a:hover, #register a:hover {
     text-decoration: underline;
 }
+
+/* Profile Page Styles */
+#profile {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+#profile h2 {
+    margin-top: 0;
+}
+
+#profile-info p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+#profile-info strong {
+    font-weight: bold;
+    color: #2c3e50;
+}
