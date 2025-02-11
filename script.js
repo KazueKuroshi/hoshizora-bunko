@@ -4,12 +4,14 @@ let selectedPaymentMethod = null;
 let selectedAccountName = null;
 let selectedAccountNumber = null;
 
+// Fungsi untuk menambahkan produk ke keranjang
 function addToCart(name, price) {
     cart.push({ name, price });
     total += price;
     updateCart();
 }
 
+// Fungsi untuk memperbarui tampilan keranjang
 function updateCart() {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
@@ -24,6 +26,7 @@ function updateCart() {
     cartTotal.textContent = total.toFixed(2);
 }
 
+// Fungsi untuk membuka modal pembayaran
 function openPaymentModal() {
     if (cart.length === 0) {
         alert('Your cart is empty!');
@@ -33,6 +36,7 @@ function openPaymentModal() {
     document.getElementById('payment-total').textContent = total.toFixed(2);
 }
 
+// Fungsi untuk menutup modal pembayaran
 function closePaymentModal() {
     document.getElementById('payment-modal').style.display = 'none';
     selectedPaymentMethod = null;
@@ -41,6 +45,7 @@ function closePaymentModal() {
     document.getElementById('payment-details').classList.add('hidden');
 }
 
+// Fungsi untuk memilih metode pembayaran
 function selectPaymentMethod(method, accountNumber, accountName) {
     selectedPaymentMethod = method;
     selectedAccountName = accountName;
@@ -54,11 +59,15 @@ function selectPaymentMethod(method, accountNumber, accountName) {
 }
 
 // Fungsi untuk mengirim pesan WhatsApp
-function sendWhatsAppMessage(contact, message) {
-    const phoneNumber = '6283807586238'; // Ganti dengan nomor WhatsApp Anda (tanpa tanda + atau 0)
-    const encodedMessage = encodeURIComponent(message); // Encode pesan agar aman untuk URL
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    
+function sendWhatsAppMessage(contact, message, imageUrl = null) {
+    const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Anda (tanpa tanda + atau 0)
+    let whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    // Jika ada tautan gambar, tambahkan ke pesan
+    if (imageUrl) {
+        whatsappUrl += `%0A%0ABukti Pembayaran: ${encodeURIComponent(imageUrl)}`;
+    }
+
     // Buka WhatsApp di tab baru
     window.open(whatsappUrl, '_blank');
 }
@@ -74,6 +83,7 @@ function handleConfirmation(event) {
         return;
     }
 
+    // Simpan informasi pembayaran
     const confirmationData = {
         paymentMethod: selectedPaymentMethod,
         accountName: selectedAccountName,
@@ -83,9 +93,21 @@ function handleConfirmation(event) {
         proof: proof.name,
     };
 
+    // Buat pesan WhatsApp
+    const message = `Payment Confirmation:
+Method: ${confirmationData.paymentMethod}
+Account Name: ${confirmationData.accountName}
+Account Number: ${confirmationData.accountNumber}
+Total: $${confirmationData.total}
+Contact: ${confirmationData.contact}
+Proof: ${confirmationData.proof}`;
+
+    // Jika ada backend, unggah gambar dan dapatkan tautan
+    // Contoh: uploadImageToServer(proof).then(imageUrl => { ... });
+    const imageUrl = null; // Ganti dengan tautan gambar jika ada
+
     // Kirim pesan WhatsApp
-    const message = `Payment Confirmation:\nMethod: ${confirmationData.paymentMethod}\nAccount Name: ${confirmationData.accountName}\nAccount Number: ${confirmationData.accountNumber}\nTotal: $${confirmationData.total}\nContact: ${confirmationData.contact}\nProof: ${confirmationData.proof}`;
-    sendWhatsAppMessage(confirmationData.contact, message);
+    sendWhatsAppMessage(confirmationData.contact, message, imageUrl);
 
     // Reset keranjang dan tutup modal
     cart = [];
