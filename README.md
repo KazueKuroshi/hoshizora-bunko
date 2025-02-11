@@ -1,4 +1,4 @@
-# Hoshizora Bunko - Online PDF file
+# Hoshizora Bunko - Perpustakaan Langit Berbintang
 
 Hoshizora Bunko adalah aplikasi belanja online sederhana yang dibangun menggunakan HTML, CSS, dan JavaScript. Aplikasi ini memungkinkan pengguna untuk:
 - Melihat produk.
