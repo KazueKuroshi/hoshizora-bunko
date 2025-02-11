@@ -53,6 +53,17 @@ function selectPaymentMethod(method, accountNumber, accountName) {
     document.getElementById('payment-details').classList.remove('hidden');
 }
 
+// Fungsi untuk mengirim pesan WhatsApp
+function sendWhatsAppMessage(contact, message) {
+    const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Anda (tanpa tanda + atau 0)
+    const encodedMessage = encodeURIComponent(message); // Encode pesan agar aman untuk URL
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Buka WhatsApp di tab baru
+    window.open(whatsappUrl, '_blank');
+}
+
+// Fungsi untuk menangani konfirmasi pembayaran
 function handleConfirmation(event) {
     event.preventDefault();
     const proof = document.getElementById('proof').files[0];
@@ -72,19 +83,16 @@ function handleConfirmation(event) {
         proof: proof.name,
     };
 
-    sendConfirmation(confirmationData);
+    // Kirim pesan WhatsApp
+    const message = `Payment Confirmation:\nMethod: ${confirmationData.paymentMethod}\nAccount Name: ${confirmationData.accountName}\nAccount Number: ${confirmationData.accountNumber}\nTotal: $${confirmationData.total}\nContact: ${confirmationData.contact}\nProof: ${confirmationData.proof}`;
+    sendWhatsAppMessage(confirmationData.contact, message);
 
+    // Reset keranjang dan tutup modal
     cart = [];
     total = 0;
     updateCart();
     closePaymentModal();
-    alert('Payment confirmation sent! We will contact you shortly.');
-}
-
-function sendConfirmation(data) {
-    const message = `Payment Confirmation:\nMethod: ${data.paymentMethod}\nAccount Name: ${data.accountName}\nAccount Number: ${data.accountNumber}\nTotal: $${data.total}\nContact: ${data.contact}\nProof: ${data.proof}`;
-    console.log('Sending confirmation:', message);
-    // Integrate with WhatsApp/Telegram/Email API here.
+    alert('Payment confirmation sent! Please check WhatsApp.');
 }
 
 // Fungsi untuk menampilkan/menyembunyikan deskripsi produk
