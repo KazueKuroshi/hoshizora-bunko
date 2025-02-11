@@ -24,12 +24,13 @@ function handleRegister(event) {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const paymentAccount = document.getElementById('payment-account').value;
 
     const userExists = users.some(u => u.email === email);
     if (userExists) {
         alert('User already exists.');
     } else {
-        users.push({ name, email, password });
+        users.push({ name, email, password, paymentAccount });
         localStorage.setItem('users', JSON.stringify(users));
         alert('Registration successful!');
         window.location.href = 'login.html'; // Redirect ke halaman login
