@@ -27,6 +27,11 @@
             <div id="profile-info">
                 <!-- Informasi profil akan ditampilkan di sini -->
             </div>
+            <form id="update-payment-form" onsubmit="updatePaymentAccount(event)">
+                <label for="new-payment-account">Update Payment Account:</label>
+                <input type="text" id="new-payment-account" name="new-payment-account" placeholder="Enter new payment account" required>
+                <button type="submit">Update Payment Account</button>
+            </form>
         </section>
     </main>
 
@@ -44,10 +49,30 @@
             document.getElementById('profile-info').innerHTML = `
                 <p><strong>Name:</strong> ${user.name}</p>
                 <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Payment Account:</strong> ${user.paymentAccount}</p>
             `;
         } else {
             // Jika tidak ada pengguna yang login, redirect ke halaman login
             window.location.href = 'login.html';
+        }
+
+        // Fungsi untuk mengupdate akun pembayaran
+        function updatePaymentAccount(event) {
+            event.preventDefault();
+            const newPaymentAccount = document.getElementById('new-payment-account').value;
+
+            // Update akun pembayaran di localStorage
+            user.paymentAccount = newPaymentAccount;
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+            // Perbarui tampilan profil
+            document.getElementById('profile-info').innerHTML = `
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Payment Account:</strong> ${user.paymentAccount}</p>
+            `;
+
+            alert('Payment account updated successfully!');
         }
 
         // Fungsi untuk logout
