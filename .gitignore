@@ -1,39 +1,65 @@
-git remote add origin git@github.com:KazueKuroshi/hoshizora-bunko.git
-git branch -M main
-git push -u origin main
-
-
----
-
-### **10. File `.gitignore`**
-```gitignore
-# Ignore node_modules
+# Ignore node_modules directory
 node_modules/
+
+# Ignore npm debug logs
+npm-debug.log*
 
 # Ignore environment variables
 .env
+.env.local
+.env.development
+.env.test
+.env.production
 
-# Ignore IDE-specific files
-.vscode/
+# Ignore IDE specific files
 .idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Ignore macOS system files
+# Ignore OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Ignore log files
-*.log
+# Ignore build directories
+/dist/
+/build/
+/out/
 
-# Ignore build files
-dist/
-build/
-
-# Ignore cache
+# Ignore cache directories
 .cache/
+.temp/
 
-# Ignore local storage backup files
+# Ignore logs and databases
+*.log
+*.sqlite
+*.sqlite3
+
+# Ignore package-lock.json and yarn.lock
+package-lock.json
+yarn.lock
+
+# Ignore local development files
+*.local
 *.bak
+*.tmp
 
-# Ignore image files (jika tidak ingin melacak gambar)
-*.jpg
-*.png
-*.gif
+# Ignore generated files
+*.min.js
+*.min.css
+*.map
+
+# Ignore other files
+*.swp
+*.swo
+*.pid
+*.seed
+*.pid.lock
